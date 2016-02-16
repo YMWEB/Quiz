@@ -1,0 +1,56 @@
+<html ng-app="quizApp">
+	<head>
+		<title>Quiz using AngularJS</title>
+		<link rel="stylesheet" href="style.css">
+		<script src="lib/angular.min.js"></script>
+		<script src="function.js"></script>
+
+	</head>
+	<body>
+		<div id="wrapper" ng-controller="QuizController">
+		
+		<div class="title">
+			<h1>Test Your Math </h1>
+		</div>
+
+		<div class="intro" ng-show="activeQuestion <0">
+			<h2>Welcome</h2>
+			<p>Click begin to test your knowledge</p>
+			<p class="btn" ng-click="activeQuestion = 0">Begin</p>
+		</div>
+
+		<div class="progress" ng-show="activeQuestion > -1?true:false">
+			<ul>
+				<li class="{{($index===activeQuestion)?'on':'off'}} {{question.questionState ==='answered'?'answered':'unanswered'}}" ng-repeat="question in questions">O</li>
+			</ul>
+		</div>
+			
+		<div class="question">
+                	<section class="{{($index===activeQuestion)?'active':'inactive'}} 
+                	{{question.questionState==='answered'?'answered':'unanswered'}}" ng-repeat="question in questions">
+
+						<p class="que">{{question.question}}</p>
+
+						<p class="ans" ng-class="{selected:isSelected($parent.$index,$index),correct:isCorrect($parent.$index,$index)}" ng-repeat="answer in questions[$index].answers" ng-click="selectAnswer($parent.$index,$index)">
+							{{answer.text}}
+						</p>
+
+						<div class="feedback">
+							<p ng-show="question.correctness === 'correct'">You are <strong>correct</strong></p>
+							<p ng-show="question.correctness === 'incorrect'">You are <strong>incorrect</strong></p>							
+							<div class="btn" ng-click="onContinue()">Continue</div>
+							
+						</div>						
+					</section>
+					<div class="result" ng-show="activeQuestion === length">
+							<h3>Results</h3>
+							<p>You scored {{100*score/length}}% by correctly answering X of the total X questions.</p>
+							<p>Use the links below to challenge your friends.</p>
+					<div class="share" ng-bind-html="createShareLinks(score)">
+								
+							</div>
+						</div>
+		</div>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,113 @@
+body{	
+	color:white;
+	padding:20px;
+}
+h1 {
+	font-size:4em;
+}
+h2{
+	font-size: 3em;
+}
+#wrapper{
+	background-color: black;
+	width:640px;
+	height:640px;
+	position:relative;
+}
+/* intro */
+#wrapper .intro{
+	position:absolute;
+	left:100px;
+	top:150px;
+	
+}
+ #wrapper .btn{
+	display:inline-block;
+	border:1px solid red;
+	background-color: red;
+	padding:5px 15px;
+	border-radius: 5px;
+	text-decoration: none;
+	cursor:pointer;
+}
+#wrapper .intro p{
+	display: block;
+	margin-top: -10px;
+}
+
+/* question */
+#wrapper .question{
+	width:550px;
+	position:relative;
+	margin:30px;
+	font-size: 1.2em;
+}
+
+#wrapper .question section.active{display:block;}
+#wrapper .question section.inactive{display:none;}
+#wrapper .question section .answered{}
+#wrapper .question .answered .ans{cursor:default;}
+#wrapper .question .unanswered .ans{cursor:pointer;}
+
+#wrapper .question .ans{
+	display:inline-block;
+	width:200px;
+	border:1px solid rgba(238,189,182,4);
+	border-radius: 5px;
+	padding:10px;
+	cursor:pointer;
+	position: relative;
+
+}
+#wrapper .ans .selected{
+	border-color: #be4b16;
+}
+#wrapper .ans .correct{
+	border-color: #459a2e;
+}
+#wrapper .ans.selected::after{content: "X";
+border:1px solid white; width:20px;height:20px;
+position:absolute;right:10px;text-align: center;}
+
+#wrapper .ans.correct::after{
+	content:"Y";border:1px solid white; width:20px;height:20px;
+position:absolute;right:10px;text-align: center
+}
+#wrapper .ans:hover{background-color: #cc6633}
+
+/* feedback */
+#wrapper .feedback{color:#efbe5e;margin-top:50px;transition:opacity 1.5s;margin-top: 1.5s;display:none;}
+#wrapper .feedback btn{maargin-top:5px;}
+#wrapper .feedback strong {color:#fff;}
+#wrapper .answered .feedback{display:block;opacity: 1;margin-top: 10px}
+
+/* result */
+#wrapper .result{position:absolute;top:10px;left:40px;width:550px;}
+#wrapper .result .share{margin-top:40px;}
+#wrapper .result .share a.btn{
+	margin-right:20px;padding: 9px 15px 8px 42px;
+	background-repeat: no-repeat;
+	background-position: 10px 5px;
+	background-size: 25px 25px;
+	color: #fff;
+}
+/* progress */
+#wrapper .progress li{
+	display:inline-block;
+	list-style: none;
+	margin:0 5px;
+	
+
+}
+#wrapper .progress li.on{
+	opacity: 1;
+	color:#ffcc66;
+}
+#wrapper .progress li.off{
+  opacity: 0.3;
+}
+
+#wrapper .progress li.answered{
+	opacity:1;
+	color:#99cc00;
+}
